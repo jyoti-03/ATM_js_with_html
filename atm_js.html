@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>ATM</title>
+    </head>
+    <body>
+<script>
+const pin = "5050";
+let attemptsLeft = 3
+alert("welcomeATM\ninsert of card")
+const name = prompt("Please enter your full name");
+for (attemptsLeft; attemptsLeft >= 0; attemptsLeft--) {
+  if (attemptsLeft === 0) {
+    alert("Incorrect pin. Please contact your bank pin ");
+    break;
+}
+const userAttempt = prompt(`Please enter your PIN number to access your bank account. You have ${attemptsLeft} left.`);
+  if (userAttempt === pin) {
+    alert("Welcome " + name);
+    break;
+  }
+}
+var balance = 10000;
+    function get_balance() {
+          alert('Your current balance is: '+balance);
+          atm();
+         }
+    function make_deposit() {
+          var deposit = parseFloat(prompt('How much would you like to deposit? :- '));
+          if (isNaN(deposit) || deposit === '') {
+              alert('Error: please enter a number!');
+              make_deposit();
+          } else {
+              balance += deposit;
+              get_balance();
+          }
+      }
+    function make_withdrawal() {
+		var withdrawal = parseFloat(prompt('How much would you like to withdrawal?:- '));
+		if (isNaN(withdrawal) || withdrawal === '') {
+			alert('Error: please enter a number!');
+			make_withdrawal();
+		} else {
+			balance -= withdrawal;
+            alert(balance)
+
+			get_balance();
+		}
+	}
+  
+    function error() {
+          alert('there is something wrong');
+     }
+    function exit() {
+          var confirm_leave = confirm('THANK YOU');
+        if (confirm_leave) {
+              window.close();
+          }
+            else{
+            alert("there is error")
+          }
+      }
+    function atm() {
+    var choice = parseInt(prompt('Select a choice\n 1.) Balance\n 2.) Deposit\n3.) Withdrawal\n 4.) Exit'));
+            if (choice === 1) {
+              get_balance();
+          } else if (choice === 2) {
+              make_deposit();
+          } else if (choice === 3) {
+              make_withdrawal();
+          } else if (choice === 4) {
+              exit();
+          } else {
+              error();
+          }
+      }
+  atm();
+</script>
+</body>
+</html>
